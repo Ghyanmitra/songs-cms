@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_intro_intro_sections",
+  "info": {
+    "displayName": "intro-section",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_seo_seos",
+  "info": {
+    "displayName": "seo",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "keyword": {
+      "type": "string"
+    },
+    "follow": {
+      "type": "boolean",
+      "default": false
+    },
+    "index": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
