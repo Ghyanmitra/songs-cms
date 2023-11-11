@@ -362,37 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
-  info: {
-    singularName: 'home-page';
-    pluralName: 'home-pages';
-    displayName: 'home-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    intro: Attribute.Component<'intro.intro-section'>;
-    seo: Attribute.Component<'seo.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -506,6 +475,242 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.folder',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginCmsAnalyzerAnalyse extends Schema.CollectionType {
+  collectionName: 'cms-analyser-results';
+  info: {
+    singularName: 'analyse';
+    pluralName: 'analyses';
+    collectionName: 'cms-analyser-results';
+    displayName: 'CmsAnalyzerResults';
+    description: 'Cms Analyzer results';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    key: Attribute.String;
+    apiName: Attribute.String;
+    frontUrl: Attribute.String;
+    documentId: Attribute.Integer;
+    documentFields: Attribute.JSON;
+    seoAnalyse: Attribute.JSON;
+    tags: Attribute.JSON;
+    screenshot: Attribute.String;
+    depth: Attribute.Integer;
+    contentKind: Attribute.String;
+    locale: Attribute.String;
+    isChecked: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::cms-analyzer.analyse',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::cms-analyzer.analyse',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginCmsAnalyzerMatch extends Schema.CollectionType {
+  collectionName: 'cms-analyser-matches';
+  info: {
+    singularName: 'match';
+    pluralName: 'matches';
+    collectionName: 'cms-analyser-matches';
+    displayName: 'CmsAnalyzerMatches';
+    description: 'Cms Analyzer matches';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    apiName: Attribute.String;
+    fieldName: Attribute.String;
+    tagName: Attribute.String;
+    componentName: Attribute.String;
+    dynamicZoneName: Attribute.String;
+    status: Attribute.String;
+    isMultipleDoc: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::cms-analyzer.match',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::cms-analyzer.match',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginCmsAnalyzerMedia extends Schema.CollectionType {
+  collectionName: 'cms-analyser-medias';
+  info: {
+    singularName: 'media';
+    pluralName: 'medias';
+    collectionName: 'cms-analyser-medias';
+    displayName: 'CmsAnalyzerMedias';
+    description: 'Cms Analyzer Medias';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    frontUrl: Attribute.String;
+    mediaUrl: Attribute.String;
+    height: Attribute.Integer;
+    width: Attribute.Integer;
+    alt: Attribute.String;
+    data: Attribute.JSON;
+    status: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::cms-analyzer.media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::cms-analyzer.media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginCmsAnalyzerSummary extends Schema.CollectionType {
+  collectionName: 'cms-analyser-summaries';
+  info: {
+    singularName: 'summary';
+    pluralName: 'summaries';
+    collectionName: 'cms-analyser-summaries';
+    displayName: 'CmsAnalyzerSummaries';
+    description: 'Cms Analyzer Results summary';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    frontUrl: Attribute.String;
+    nbUrl: Attribute.Integer;
+    nbErrorLow: Attribute.Integer;
+    nbErrorHigh: Attribute.Integer;
+    user: Attribute.String;
+    date: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::cms-analyzer.summary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::cms-analyzer.summary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
       'oneToOne',
       'admin::user'
     > &
@@ -664,43 +869,100 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
   info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'home-page';
   };
   options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
+    draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
-    code: Attribute.String & Attribute.Unique;
+    intro: Attribute.Component<'intro.intro-section'>;
+    seo: Attribute.Component<'seo.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSongCategorySongCategory extends Schema.CollectionType {
+  collectionName: 'song_categories';
+  info: {
+    singularName: 'song-category';
+    pluralName: 'song-categories';
+    displayName: 'song-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::song-category.song-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::song-category.song-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSongListSongList extends Schema.CollectionType {
+  collectionName: 'song_lists';
+  info: {
+    singularName: 'song-list';
+    pluralName: 'song-lists';
+    displayName: 'song-list';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    lyrics: Attribute.RichText;
+    song_category: Attribute.Relation<
+      'api::song-list.song-list',
+      'oneToOne',
+      'api::song-category.song-category'
+    >;
+    seo: Attribute.Component<'seo.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::song-list.song-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::song-list.song-list',
       'oneToOne',
       'admin::user'
     > &
@@ -718,13 +980,19 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::cms-analyzer.analyse': PluginCmsAnalyzerAnalyse;
+      'plugin::cms-analyzer.match': PluginCmsAnalyzerMatch;
+      'plugin::cms-analyzer.media': PluginCmsAnalyzerMedia;
+      'plugin::cms-analyzer.summary': PluginCmsAnalyzerSummary;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::song-category.song-category': ApiSongCategorySongCategory;
+      'api::song-list.song-list': ApiSongListSongList;
     }
   }
 }
