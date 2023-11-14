@@ -906,6 +906,7 @@ export interface ApiSongCategorySongCategory extends Schema.CollectionType {
     singularName: 'song-category';
     pluralName: 'song-categories';
     displayName: 'song-category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -913,6 +914,7 @@ export interface ApiSongCategorySongCategory extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
+    slug: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

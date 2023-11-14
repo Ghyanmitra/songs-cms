@@ -4,7 +4,8 @@
   "info": {
     "singularName": "song-category",
     "pluralName": "song-categories",
-    "displayName": "song-category"
+    "displayName": "song-category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
