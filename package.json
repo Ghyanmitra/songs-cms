@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "strapi build",
+    "cs": "config-sync",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi"
@@ -19,7 +20,8 @@
     "@strapi/plugin-i18n": "4.15.0",
     "@strapi/plugin-users-permissions": "4.15.0",
     "@strapi/strapi": "4.15.0",
-    "mysql": "2.18.1"
+    "mysql": "2.18.1",
+    "strapi-plugin-config-sync": "^1.2.3"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",

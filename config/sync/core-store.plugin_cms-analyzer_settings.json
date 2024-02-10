@@ -1,0 +1,23 @@
+{
+  "key": "plugin_cms-analyzer_settings",
+  "value": {
+    "seo": {
+      "enabled": false,
+      "frontUrl": "",
+      "frontEnabled": false,
+      "frontUrl2": "",
+      "frontEnabled2": false,
+      "frontUrl3": "",
+      "frontEnabled3": false
+    },
+    "medias": {
+      "enabled": false
+    },
+    "greenCms": {
+      "enabled": false
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
